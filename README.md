@@ -14,14 +14,3 @@
 <p align="center">
   <img src="https://assets.stickpng.com/images/62a7475d223343fbc2207cff.png" alt="Logo Ionic">
 </p>
-
-
-# 📑  📑
-
-
-## 📑  📑
-
-
-# 🚩  🚩
-
-a1fe6631f07d49ae2d4e7451c6ec4bc6
