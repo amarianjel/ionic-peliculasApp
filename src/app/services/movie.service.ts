@@ -39,17 +39,15 @@ export class MovieService {
       mesString = mes;
     }
 
-
     const inicio = `${ hoy.getFullYear() }-${ mesString }-01`;
     const fin    = `${ hoy.getFullYear() }-${ mesString }-${ ultimoDia }`;
-
-
     // tslint:disable-next-line:max-line-length
     return this.ejecutarQuery<RespuestaMDB>(`/discover/movie?primary_release_date.gte=${ inicio }&primary_release_date.lte=${ fin }`);
 
   }
 
   getPopulares(){
+
     this.popularesPage++;
 
     const query = `/discover/movie?sort_by=popularity.desc&page=${ this.popularesPage }`;
@@ -65,22 +63,20 @@ export class MovieService {
     return this.ejecutarQuery<RespuestaCredits>(`/movie/${ id }/credits?a=1`);
   }
 
+  buscarPeliculas( texto: string ) {
+    return this.ejecutarQuery(`/search/movie?query=${ texto }`);
+  }
 
   cargarGeneros(): Promise<Genre[]> {
     return new Promise( resolve => {
 
       this.ejecutarQuery(`/genre/movie/list?a=1`)
-        .subscribe( resp => {
-          // this.generos = resp['genres'];
-          console.log(this.generos);
+        .subscribe(( resp: any ) => {
+          // README: Convertir generos en array, ya que viene como objeto
+          this.generos = resp['genres'];
+          //console.log(this.generos);
           resolve(this.generos);
         });
     });
   }
-
-  buscarPeliculas( texto: string ) {
-    return this.ejecutarQuery(`/search/movie?query=${ texto }`);
-
-  }
-
 }

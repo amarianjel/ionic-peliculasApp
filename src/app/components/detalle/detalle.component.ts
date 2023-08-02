@@ -25,15 +25,15 @@ export class DetalleComponent  implements OnInit {
   };
 
   constructor( private movieService: MovieService,
-               private modalCtrl: ModalController,
-                ) { }
+                private modalCtrl: ModalController, 
+                private dataLocal: DataLocalService ) { }
 
   ngOnInit() {
     // console.log('ID', this.id );
 
+    // BUG: problema con la carga
     // this.dataLocal.existePelicula( this.id )
     //   .then( existe => this.estrella = ( existe ) ? 'star' : 'star-outline' );
-
 
     this.movieService.getPeliculaDetalle( this.id )
         .subscribe( resp => {
@@ -53,9 +53,9 @@ export class DetalleComponent  implements OnInit {
     this.modalCtrl.dismiss();
   }
 
-  // favorito() {
-  //   const existe = this.dataLocal.guardarPelicula( this.pelicula );
-  //   this.estrella = ( existe ) ? 'star' : 'star-outline';
-  // }
+  favorito() {
+    const existe = this.dataLocal.guardarPelicula( this.pelicula );
+    this.estrella = ( existe ) ? 'star' : 'star-outline';
+  }
 
 }

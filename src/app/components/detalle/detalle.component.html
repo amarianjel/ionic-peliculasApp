@@ -42,7 +42,7 @@
 
         <ion-label> {{ pelicula.overview | slice: 0: oculto }}... </ion-label>
         <ion-label color="primary"
-                   (click)="oculto = 5000"
+                    (click)="oculto = 5000"
                    *ngIf="oculto !== 5000">Leer más!</ion-label>
 
       </ion-col>
@@ -85,8 +85,6 @@
     </swiper-slide>
   </swiper-container>
 
-
-
 </ion-content>
 
 
@@ -101,10 +99,10 @@
     </ion-buttons>
 
     <ion-buttons slot="end">
-      <!-- <ion-button (click)="favorito()">
+      <ion-button (click)="favorito()">
         <ion-label>Favorito</ion-label>
         <ion-icon slot="end" [name]="estrella"></ion-icon>
-      </ion-button> -->
+      </ion-button>
     </ion-buttons>
 
 
